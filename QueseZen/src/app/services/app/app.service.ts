@@ -6,6 +6,8 @@ import { map } from 'rxjs/operators';
 import { IFUser } from 'src/app/config/interface/user';
 import { IFAppConfig } from 'src/app/config/interface/app-config';
 import { ViewService } from 'src/app/services/view/view.service';
+
+// TODO:แยก enumn
 export enum ResponseType {
   json = 0,
   text = 1,
@@ -13,6 +15,7 @@ export enum ResponseType {
 }
 @Injectable()
 export class AppService {
+
   user: IFUser = null;
   appConfig: IFAppConfig = null;
 
@@ -23,7 +26,7 @@ export class AppService {
     private viewService: ViewService
   ) { }
 
-  /**
+  /*
    * Get application host name.
    *
    * `const host = this.app.hostName;`
@@ -34,10 +37,13 @@ export class AppService {
   }
 
   get filePath(): string {
-    return document.getElementsByTagName('base')[0].href.replace('onedpt', 'onedpt-storage');
+    return document
+          .getElementsByTagName('base')[0]
+          .href
+          .replace('onedpt', 'onedpt-storage');
   }
 
-  /**
+  /*
    * Request web service with url
    *
    * `const req: Observable<any> = this.appServicce.reqUrl('http://example.com/api/..');`
@@ -47,11 +53,18 @@ export class AppService {
    * @param showLoading (Boolean) showLoading, default: true
    * @param responseType (Optional) Response type, default: ResponseType.text
    */
-  reqUrl(url: string, params: any = {}, responseType: ResponseType = ResponseType.text, showLoading: boolean = false): Observable<any> {
+  reqUrl(url: string,
+         params: any = {},
+         responseType: ResponseType = ResponseType.text,
+         showLoading: boolean = false
+    ): Observable<any> {
+
     if (showLoading) {
       this.viewService.showLoading();
     }
-    return this._reqUrl(url, params, responseType).pipe(
+
+    return this._reqUrl(url, params, responseType)
+    .pipe(
       map((jsonResponse: any) => {
         if (showLoading) {
           this.viewService.hideLoading();
@@ -77,8 +90,6 @@ export class AppService {
    *    result:Object {token:""}
    * }
    */
-
-
 
   reqApi(url: string, params: any = {}, responseType: ResponseType = ResponseType.json, showLoading: boolean = false): Observable<any> {
     if (showLoading) {

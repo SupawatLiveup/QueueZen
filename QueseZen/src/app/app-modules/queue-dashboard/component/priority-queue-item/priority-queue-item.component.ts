@@ -12,12 +12,14 @@ export interface IFPriorityQueueItem {
   styleUrls: ['./priority-queue-item.component.scss']
 })
 export class PriorityQueueItemComponent implements OnInit {
+
+  @Input() initParameter: IFPriorityQueueItem = null;
+
   parameter: IFPriorityQueueItem = {
     QUEUE_INDEX: '',
     QUEUE_NO: '',
     QUEUE_TIME: ''
   };
-  @Input() initParameter: IFPriorityQueueItem = null;
 
   constructor() { }
 

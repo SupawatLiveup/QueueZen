@@ -16,7 +16,6 @@ export interface IFGeneral {
 /**
  * export เฉพาะ export interface นี้เท่านั้น
  */
-// tslint:disable-next-line: class-name
 export interface IFAppConfig {
   MENUS?: IFMenu[];
   GENURAL?: IFGeneral[];

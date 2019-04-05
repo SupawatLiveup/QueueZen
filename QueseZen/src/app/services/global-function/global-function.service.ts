@@ -6,7 +6,7 @@ import { DatePipe } from '@angular/common';
 })
 export class GlobalFunctionService {
 
-  dateLabelFormat = 'dd/MM/yyyy';
+  private dateLabelFormat = 'dd/MM/yyyy';
 
   constructor() { }
 
@@ -22,6 +22,7 @@ export class GlobalFunctionService {
       return null;
     }
   }
+
   getDateLabel(value: string) {
     const datePipe = new DatePipe('en-US');
     value = datePipe.transform(value, this.dateLabelFormat);

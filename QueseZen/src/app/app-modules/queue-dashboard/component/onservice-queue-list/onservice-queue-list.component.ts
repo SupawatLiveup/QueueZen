@@ -18,32 +18,58 @@ const mockupElementDate: IFTable[] = [
   styleUrls: ['./onservice-queue-list.component.scss']
 })
 export class OnserviceQueueListComponent implements OnInit {
-  // public displayedColumns: string[] = ['SERVICE_CHANEL', 'QUEUE_NUMBER'];
-  public dataSource: IFTable[];
+
+  showItems: IFTable[];
   priorityQueueItemHeight: number;
   priorityQueueMaxItem = 10;
+
+  private defaultData: IFTable = {
+    SERVICE_CHANEL: ''
+    , QUEUE_NUMBER: ''
+  };
 
   constructor() { }
 
   ngOnInit() {
+    this.queryOnServiceData();
+
     this.setOnServiceQueueItemHeight(this.priorityQueueMaxItem);
     this.setOnServiceQueueItem(mockupElementDate, this.priorityQueueMaxItem);
   }
+
+  queryOnServiceData() {
+     // TODO Example call service Api
+     // return this.appService.reqApi(`${this.appService.hostName}Handlers/AppInit.ashx`, null, ResponseType.json).pipe(
+      //   map(response => {
+      //     if (response.IS_SUCCESS && response.userInfo) {
+      //       // update global user information
+      //       this.appService.user = response.userInfo;
+
+      //       // update global application config
+      //       this.appService.appConfig = {
+      //         Systems: response.systems,
+      //         Functions: response.function,
+      //         General: response.general
+      //       };
+      //     }
+      //     return response.IS_SUCCESS && response.userInfo != undefined;
+      //   })
+      // );
+  }
+
   setOnServiceQueueItemHeight(maxItem: number) {
     this.priorityQueueMaxItem = maxItem;
     this.priorityQueueItemHeight = 100 / (maxItem);
   }
+
   setOnServiceQueueItem(mockPriorityQueueItem: IFTable[], maxItem: number) {
-    this.dataSource = new Array();
+    this.showItems = new Array();
+
     for (let i = 0; i < maxItem; i++) {
       if (mockPriorityQueueItem[i]) {
-        this.dataSource.push(mockPriorityQueueItem[i]);
+        this.showItems.push(mockPriorityQueueItem[i]);
       } else {
-        const newData: IFTable = {
-          SERVICE_CHANEL: ''
-          , QUEUE_NUMBER: ''
-        };
-        this.dataSource.push(newData);
+        this.showItems.push(this.defaultData);
       }
     }
   }

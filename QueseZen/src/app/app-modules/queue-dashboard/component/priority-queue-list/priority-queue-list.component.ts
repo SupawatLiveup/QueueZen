@@ -40,30 +40,37 @@ export const mockupElementDate: IFPriorityQueueItem[] =
   styleUrls: ['./priority-queue-list.component.scss']
 })
 export class PriorityQueueListComponent implements OnInit {
-  constructor() { }
+
   priorityQueueItem: IFPriorityQueueItem[];
   priorityQueueItemWidth: number;
   priorityQueueMaxItem = 10;
+
+  private defaultData: IFPriorityQueueItem = {
+    QUEUE_NO: '',
+    QUEUE_INDEX: '',
+    QUEUE_TIME: '',
+  };
+
+  constructor() { }
+
   ngOnInit() {
     this.setPriorityQueueItemWidth(this.priorityQueueMaxItem);
     this.setPriorityQueueItem(mockupElementDate, this.priorityQueueMaxItem);
   }
+
   setPriorityQueueItemWidth(maxItem: number) {
     this.priorityQueueMaxItem = maxItem;
     this.priorityQueueItemWidth = 100 / maxItem;
   }
+
   setPriorityQueueItem(mockPriorityQueueItem: IFPriorityQueueItem[], maxItem: number) {
     this.priorityQueueItem = new Array();
+
     for (let i = 0; i < maxItem; i++) {
       if (mockPriorityQueueItem[i]) {
         this.priorityQueueItem.push(mockPriorityQueueItem[i]);
       } else {
-        const newData: IFPriorityQueueItem = {
-          QUEUE_NO: '',
-          QUEUE_INDEX: '',
-          QUEUE_TIME: '',
-        };
-        this.priorityQueueItem.push(newData);
+        this.priorityQueueItem.push(this.defaultData);
       }
     }
   }

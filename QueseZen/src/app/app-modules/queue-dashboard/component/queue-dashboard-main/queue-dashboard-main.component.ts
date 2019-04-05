@@ -8,15 +8,20 @@ import { AppService } from 'src/app/services/app/app.service';
 })
 export class QueueDashboardMainComponent implements OnInit {
 
-  constructor(public appService: AppService, public globalFunction: GlobalFunctionService) { }
   queueDate = '';
   now: any;
   branchName: string;
+
+  constructor(
+    public appService: AppService,
+    public globalFunction: GlobalFunctionService
+    ) { }
 
   ngOnInit() {
     this.setDateNowString();
     this.branchName = this.appService.user.BRANCH_NAME;
   }
+
   setDateNowString() {
     setInterval(() => {
       this.now = Date.now();

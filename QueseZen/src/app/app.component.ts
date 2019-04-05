@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ViewService } from 'src/app/services/view/view.service';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,9 +10,9 @@ export class AppComponent {
   title = 'QueseZen';
 
   constructor(public viewService: ViewService) {
-    if (window) {
-      // window.console.log = function () { };
-      // window.console.error = function () { };
+    if (window  && environment.production) {
+      window.console.log =  () => { };
+      window.console.error = () => { };
     }
   }
 }
