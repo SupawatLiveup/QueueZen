@@ -1,0 +1,23 @@
+:host {
+
+  .container-left {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 20%;
+    opacity: 0.95;
+    background-color: #f3f6f8;
+    box-shadow: -3px 3px 21px 0 rgba(1, 1, 1, 0.31);
+  }
+  .container-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 80%;
+    opacity: 0.95;
+    background-color: #f3f6f8;
+    box-shadow: -3px 3px 21px 0 rgba(1, 1, 1, 0.31);
+  }
+}

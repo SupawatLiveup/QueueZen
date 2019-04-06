@@ -1,0 +1,17 @@
+<div class="main-container">
+  <table class="h-100 table table-bordered">
+    <tbody>
+      <tr>
+        <th [colSpan]=priorityQueueMaxItem class="align-middle priority-queue-list-title ">
+          จองคิวออนไลน์ / Online Booking Reservation
+        </th>
+      </tr>
+      <tr>
+        <td *ngFor="let item of priorityQueueItem" [style.width.%]=priorityQueueItemWidth class="align-baseline">
+          <app-priority-queue-item [initParameter]=item>
+          </app-priority-queue-item>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

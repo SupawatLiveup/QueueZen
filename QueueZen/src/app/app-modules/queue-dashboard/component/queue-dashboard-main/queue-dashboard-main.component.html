@@ -1,0 +1,36 @@
+<div class="main-container">
+  <div class="title-container">
+    <div class="row h-100">
+      <div class="col h-100">
+        <img src="../../../../../assets/images/logo/logo_quesezen.png" class="h-100"> Queue Zen
+      </div>
+      <div class="col h-100 d-table">
+        <div class="align-middle d-table-cell">
+          <b>Queue Date:</b> {{queueDate}}<b> &nbsp;&nbsp;&nbsp; Time:</b>{{now | date:'HH:mm:ss'}}
+        </div>
+      </div>
+      <div class="col h-100 d-table">
+        <div class="align-middle d-table-cell">
+          <b>Branch Name:</b> {{branchName}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="onservcie-container">
+    <div class="row h-100">
+      <div class="col">
+        <app-onservice-queue-list></app-onservice-queue-list>
+      </div>
+      <div class="col  w-100 h-100 d-table">
+        <div class="background-bander d-table-cell align-middle text-center">Advertising Banner</div>
+      </div>
+    </div>
+  </div>
+  <div class="priority-container">
+    <div class="row">
+      <div class="col-sm">
+        <app-priority-queue-list></app-priority-queue-list>
+      </div>
+    </div>
+  </div>
+</div>
