@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { from } from 'rxjs';
-export interface IFTable {
-  SERVICE_CHANEL: string;
-  QUEUE_NUMBER: string;
-}
+import { IFOnserviceQueueItem } from 'src/app/config/interface/queue-dashboard/onservice-queue-list/if-onservice-queue-item';
+import { mockupOnserviceQueueItem } from 'src/app/config/mockup-data/queue-dashboard/onservice-queue-list/mockup-onservice-queue-item';
 
-const mockupElementDate: IFTable[] = [
+const mockupElementDate: IFOnserviceQueueItem[] = [
   { SERVICE_CHANEL: '5', QUEUE_NUMBER: 'A001' },
   { SERVICE_CHANEL: '2', QUEUE_NUMBER: 'A002' },
   { SERVICE_CHANEL: '3', QUEUE_NUMBER: 'A003' },
@@ -19,11 +16,12 @@ const mockupElementDate: IFTable[] = [
 })
 export class OnserviceQueueListComponent implements OnInit {
 
-  showItems: IFTable[];
+  mockupElementDate: IFOnserviceQueueItem[] = mockupOnserviceQueueItem;
+  showItems: IFOnserviceQueueItem[];
   priorityQueueItemHeight: number;
   priorityQueueMaxItem = 10;
 
-  private defaultData: IFTable = {
+  private defaultData: IFOnserviceQueueItem = {
     SERVICE_CHANEL: ''
     , QUEUE_NUMBER: ''
   };
@@ -34,7 +32,7 @@ export class OnserviceQueueListComponent implements OnInit {
     this.queryOnServiceData();
 
     this.setOnServiceQueueItemHeight(this.priorityQueueMaxItem);
-    this.setOnServiceQueueItem(mockupElementDate, this.priorityQueueMaxItem);
+    this.setOnServiceQueueItem(this.mockupElementDate, this.priorityQueueMaxItem);
   }
 
   queryOnServiceData() {
@@ -62,7 +60,7 @@ export class OnserviceQueueListComponent implements OnInit {
     this.priorityQueueItemHeight = 100 / (maxItem);
   }
 
-  setOnServiceQueueItem(mockPriorityQueueItem: IFTable[], maxItem: number) {
+  setOnServiceQueueItem(mockPriorityQueueItem: IFOnserviceQueueItem[], maxItem: number) {
     this.showItems = new Array();
 
     for (let i = 0; i < maxItem; i++) {

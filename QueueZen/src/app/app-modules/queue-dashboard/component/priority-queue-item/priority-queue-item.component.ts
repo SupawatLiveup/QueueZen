@@ -1,10 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-
-export interface IFPriorityQueueItem {
-  QUEUE_NO: string;
-  QUEUE_INDEX: string;
-  QUEUE_TIME: string;
-}
+import { IFPriorityQueueItem } from 'src/app/config/interface/queue-dashboard/priority-queue-item/if-priority-queue-item';
 
 @Component({
   selector: 'app-priority-queue-item',

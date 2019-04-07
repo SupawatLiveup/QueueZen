@@ -9,8 +9,6 @@ import { AppService } from 'src/app/services/app/app.service';
 import { ViewService } from 'src/app/services/view/view.service';
 import { GlobalFunctionService } from 'src/app/services/global-function/global-function.service';
 
-import { MenuConfig } from 'src/app/config/class/menu-config';
-
 import { LoginComponent } from './login/login.component';
 import { HomepageComponent } from 'src/app/app-modules/homepage/homepage.component';
 import { SwitcherComponent } from './switcher/switcher.component';
@@ -45,8 +43,6 @@ const components = [
   , providers: [
     AppService
     , ViewService
-    , GlobalFunctionService
-    , MenuConfig
-  ]
+    , GlobalFunctionService  ]
 })
 export class AppBaseModule { }
